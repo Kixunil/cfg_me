@@ -1,0 +1,19 @@
+[general]
+doc = "Generates data for given configure_me specification"
+
+[[param]]
+name = "input"
+abbr = "i"
+type = "std::path::PathBuf"
+doc = "Configuration specification file (in toml format). Will try to find it in Cargo.toml if not specified."
+
+[[param]]
+name = "output"
+abbr = "o"
+type = "std::path::PathBuf"
+doc = "Where to store the output. Will display it directly if not specified."
+
+[[switch]]
+name = "ignore_no_dep"
+abbr = "n"
+doc = "Don't fail if the package doesn't depend on configure_me_codegen and is missing spec"
