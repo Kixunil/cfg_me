@@ -3,6 +3,9 @@ name = "cfg_me"
 version = "0.1.0"
 authors = ["Martin Habovstiak <martin.habovstiak@gmail.com>"]
 edition = "2018"
+description = "File generator for `configure_me`"
+license = "MITNFA"
+repository = "https://github.com/Kixunil/cfg_me"
 
 [package.metadata.configure_me]
 spec = "config_spec.toml"
