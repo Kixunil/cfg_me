@@ -12,13 +12,14 @@ spec = "config_spec.toml"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[features]
+default = ["spanned"]
+spanned = ["configure_me_codegen/spanned"]
+
 [dependencies]
 configure_me = "0.4.0"
 serde = "1"
-configure_me_codegen = { version = "0.4.1", features = ["man"] }
+configure_me_codegen = { version = "0.4.3", features = ["man"] }
 
 [build-dependencies]
-configure_me_codegen = "0.4.1"
-
-[patch.crates-io.configure_me_codegen]
-path = "../configure_me/configure_me_codegen"
+configure_me_codegen = "0.4.3"

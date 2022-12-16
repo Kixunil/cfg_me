@@ -61,7 +61,7 @@ fn generate_man_curr_dir<W: std::io::Write>(output: W, ignore_no_dep: bool) {
     let configure_me = try_or_die!(metadata.configure_me.as_ref().ok_or("missing configure_me"), "get configure_me metadata", ignore);
 
     if let SpecificationPaths::Single(path) = &configure_me.spec_paths {
-        try_or_die!(generate_man(path, output, &manifest), "generate man page");
+        generate_man(path, output, &manifest).unwrap_or_else(|error| error.report_and_exit())
     } else {
         eprintln!("Multi-binary crates not supported yet");
         std::process::exit(1);
@@ -71,7 +71,7 @@ fn generate_man_curr_dir<W: std::io::Write>(output: W, ignore_no_dep: bool) {
 fn generate_man<W: std::io::Write>(input: &Path, output: W) {
     use configure_me_codegen::manifest::CurrentDir;
 
-    try_or_die!(configure_me_codegen::generate_man(input, output, CurrentDir), "generate man page");
+        configure_me_codegen::generate_man(input, output, CurrentDir).unwrap_or_else(|error| error.report_and_exit())
 }
 
 fn main() {
